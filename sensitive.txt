@@ -1,0 +1,56 @@
+﻿Introduction
+In this task, you will write programs which perform public-key encryption and compute cryptographic checksums (keyless and keyed). You may use any programming language in this task.
+
+Section 1: Public-key encryption
+
+1. Create a file “sensitive.txt”.
+2. Write a program “generate_keys”. This program will randomly generate a pair of 3072-bit RSA keys and then it will save the public key into a file “pub_key” and the private key into a file “priv_key”.
+In the terminal window, run the program “generate_keys”. Then, display the files “pub_key” and “priv_key” using the “hexdump” command.
+
+
+3. Write a program “encrypt_file”. This program will encrypt a file “sensitive.txt” in the current directory on the key “pub_key”. The key will be read from the file “pub_key”. The encrypted file will overwrite the original file “sensitive.txt”.
+
+Make sure that the original (unencrypted) file “sensitive.txt” is placed into the same directory. In the terminal window, display the first 100 bytes of the original (unencrypted) file “sensitive.txt” using the “head” command. Run the program “encrypt_file”. Display the first 100 bytes of the encrypted file “sensitive.txt” using the “hexdump” command.
+
+Note the difference of the files indicating the encryption.
+
+4. Write a program “decrypt_file”. This program will decrypt the file “sensitive.txt” in the current directory using the key “priv_key”. The key will be read from the file “priv_key”. The decrypted file will overwrite the encrypted file “sensitive.txt”.
+Make sure that the encrypted file “sensitive.txt” is in the directory “hw3”. In the terminal window, display the first 100 bytes of the encrypted file “sensitive.txt” using the “hexdump” command. Run the program “decrypt_file”. Display the first 100 bytes of the decrypted file “sensitive.txt” using the “head” command.
+
+Note how the bytes now originally become the same as the original sensitive.txt.
+
+5. Write a program “compute_checksum” which computes a keyless cryptographic checksum of a file “sensitive.txt”. You will use a hash function SHA256 compute it. 
+The checksum will be written into a file “sensitive_checksum.txt”—this file should be in the text format.
+Copy the original (unencrypted) file “sensitive.txt” into the current directory
+In the terminal window, run the program “compute_checksum”. Display the checksum:
+
+cat sensitive_checksum.txt 
+
+6. Write a program “verify_checksum” which works as follows: it computes a checksum of “sensitive.txt” and compares it with the contents of “sensitive_checksum.txt”. 
+If the resulting hash values are the same, then the program outputs “Accept!” and otherwise it outputs “Reject!”.
+In the terminal window, run the program “verify_checksum”. (Observe the result.)
+Change the first symbol in “sensitive.txt” to a different symbol, and save the file.
+Come back to the terminal window and run the program “verify_checksum”. 
+
+
+Note the result of running the program after changing. Changing a single character will result in a completely different hash
+
+7. Write a program “compute_keyed_checksum” which works similarly to the one in Step 4, but instead of SHA256, you will use the keyed hash function HMAC-SHA256. A 256-bit key will be read from the file “key.bin”. The checksum will be written into a file “sensitive_keyed_checksum.txt”—this file should be in the text format.
+Generate a random key:
+head -c 256 /dev/urandom > key.bin
+Copy the original (unencrypted) file “sensitive.txt” into the current directory.
+In the terminal window, run the program “compute_keyed_checksum”. Display the checksum:
+cat sensitive_keyed_checksum.txt
+
+
+8. Write a program “verify_keyed_checksum” which works as follows: 
+it computes a keyed checksum of “sensitive.txt” using HMAC-SHA256 and compares it with the contents of “sensitive_keyed_checksum.txt”. If the resulting values are the same, then the program outputs “Accept!” and otherwise it outputs “Reject!”.
+In the terminal window, run the program “verify_keyed_checksum”. (Observe the result.)
+Change the first symbol in “sensitive.txt” to a different symbol, and save the file.
+Come back to the terminal window and run the program “verify_checksum”. 
+
+Note the result of running the program after changing. Changing a single character will result in a completely different hash
+
+
+
+
