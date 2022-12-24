@@ -27,4 +27,4 @@ This project includes three Python scripts `generate_keys.py`, `ransomware.py` a
 
 Thank you for visiting this project.
 
-Proof of Concept can be found on my blog: (Ransomware)[https://medium.com/@ianpeter/ransomware-project-195ec1a078eb]
+Proof of Concept can be found on my blog: **[Ransomware](https://medium.com/@ianpeter/ransomware-project-195ec1a078eb)**
